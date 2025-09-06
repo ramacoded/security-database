@@ -1,0 +1,136 @@
+:root {
+--background-color: #ffffff;
+--text-color: #212529;
+--subtle-text-color: #6c757d;
+--border-color: #dee2e6;
+--hover-color: #f8f9fa;
+--card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+html { height: 100%; }
+body {
+min-height: 100%; margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+background-color: var(--background-color); color: var(--text-color); display: flex; flex-direction: column;
+}
+body.modal-open { overflow: hidden; }
+
+.page-section { display: none; flex-direction: column; flex-grow: 1; }
+.page-section.active { display: flex; }
+
+.card {
+background: var(--background-color); padding: 25px; border-radius: 8px;
+border: 1px solid var(--border-color); box-shadow: var(--card-shadow);
+}
+button, input[type="text"], input[type="password"] {
+font-size: 14px; border: 1px solid var(--border-color); border-radius: 6px;
+padding: 9px 12px; box-sizing: border-box;
+}
+button { cursor: pointer; background-color: var(--background-color); transition: background-color 0.2s; }
+button:hover { background-color: var(--hover-color); }
+.close-button {
+position: absolute; top: 10px; right: 10px; border: none; background: none;
+font-size: 24px; font-weight: bold; color: var(--subtle-text-color);
+}
+
+#app-loader {
+position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.9);
+display: flex; justify-content: center; align-items: center; z-index: 9999; flex-direction: column;
+}
+.spinner {
+border: 3px solid var(--hover-color); width: 30px; height: 30px; border-radius: 50%;
+border-left-color: var(--text-color); animation: spin 1s ease infinite; margin-bottom: 10px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+#password-section { justify-content: center; align-items: center; background-color: var(--hover-color); }
+.login-card { text-align: center; width: 300px; display: flex; flex-direction: column; gap: 12px; }
+.login-card h2 { margin: 0; font-size: 1.5em; }
+.login-card input { text-align: center; }
+.login-card button { width: 100%; background-color: var(--text-color); color: var(--background-color); border-color: var(--text-color); }
+.login-card button:hover { background-color: #343a40; }
+
+#burger-menu {
+position: fixed; top: 15px; left: 15px; width: 38px; height: 38px;
+cursor: pointer; z-index: 1002; display: flex; flex-direction: column;
+justify-content: center; align-items: center; gap: 4px;
+background-color: var(--text-color); border-radius: 6px;
+}
+#burger-menu span {
+display: block; height: 2px; width: 16px;
+background-color: var(--background-color); border-radius: 3px;
+transition: transform 0.3s ease-in-out, opacity 0.3s ease;
+}
+#burger-menu.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+#burger-menu.open span:nth-child(2) { opacity: 0; }
+#burger-menu.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+#user-avatar {
+position: fixed; top: 15px; right: 15px; z-index: 999;
+cursor: pointer; width: 38px; height: 38px; border-radius: 50%;
+border: 2px solid var(--border-color); object-fit: cover;
+background-color: var(--hover-color);
+}
+
+.sidebar {
+position: fixed; top: 0; left: -100%; width: 260px;
+height: 100%; background: var(--background-color);
+border-right: 1px solid var(--border-color); transition: left 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+display: flex; flex-direction: column; z-index: 1001;
+padding: 10px;
+}
+.sidebar.open { left: 0; }
+.sidebar-header { padding: 10px; padding-top: 60px; }
+
+#sidebar-overlay, #modal-overlay {
+position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4);
+opacity: 0; visibility: hidden; transition: opacity 0.35s, visibility 0.35s;
+}
+#sidebar-overlay { z-index: 1000; }
+#modal-overlay { z-index: 1004; }
+#sidebar-overlay.active, #modal-overlay.active { opacity: 1; visibility: visible; }
+
+#number-list { list-style: none; padding: 0; margin: 0; overflow-y: auto; flex-grow: 1; }
+#number-list li { display: flex; justify-content: space-between; align-items: center; padding: 12px 10px; border-bottom: 1px solid var(--border-color); font-size: 15px; }
+.actions-menu { position: relative; }
+.dots-button { background: none; border: none; font-size: 20px; cursor: pointer; padding: 0 5px; }
+.dropdown-content {
+display: none; position: absolute; right: 0; background-color: var(--background-color);
+width: 120px; border: 1px solid var(--border-color); z-index: 1;
+border-radius: 8px;
+box-shadow: var(--card-shadow); overflow: hidden;
+}
+.dropdown-content button {
+width: 100%; text-align: left; border: none; border-radius: 0;
+}
+
+.main-content { display: flex; flex-direction: column; flex-grow: 1; padding: 20px; box-sizing: border-box; width: 100%; }
+.input-container { display: flex; gap: 10px; width: 100%; max-width: 450px; align-items: center; margin: auto; }
+.input-container input { flex-grow: 1; }
+.input-container button { background-color: var(--text-color); color: var(--background-color); border-color: var(--text-color); }
+
+.main-footer {
+width: 100%; text-align: center; padding: 1px 0 1px 0; margin-top: 2rem; /* Diperbesar */
+border-top: 1px solid var(--border-color); color: var(--subtle-text-color); font-size: 14px; box-sizing: border-box;
+}
+.github-logo { color: var(--text-color); transition: opacity 0.2s; }
+.github-logo:hover { opacity: 0.7; }
+
+#user-modal {
+position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1005;
+width: 90%; max-width: 300px; opacity: 0; visibility: hidden;
+transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+}
+#user-modal.active { opacity: 1; visibility: visible; }
+#user-modal h3 { margin-top: 0; font-size: 1.1em; }
+.info-field { margin-bottom: 15px; }
+.info-field small { font-size: 12px; color: var(--subtle-text-color); }
+.info-field p { margin: 4px 0 0 0; font-weight: bold; background-color: var(--hover-color); padding: 8px; border-radius: 4px; word-break: break-all; }
+.password-display-container { min-height: 35px; }
+#modal-toggle-password-btn { width: 100%; margin-top: 10px; }
+
+@media (max-width: 480px) {
+.input-container { flex-direction: column; gap: 15px; border: none; box-shadow: none; padding: 0; }
+.input-container input, .input-container button { width: 100%; }
+.main-content { padding: 15px; }
+.sidebar { width: 260px; }
+}

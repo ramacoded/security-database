@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ramacoded</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app-loader" style="display: none;">
+<div class="spinner"></div>
+<p>Loading...</p>
+</div>
+
+<div id="password-section" class="page-section active">
+<div class="card login-card">
+<h2>Enter Password</h2>
+<input type="password" id="password-input" placeholder="••••••••">
+<button id="password-submit">Login</button>
+</div>
+</div>
+
+<div id="main-section" class="page-section">
+<div id="burger-menu">
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+<img id="user-avatar" alt="User Avatar">
+
+<div id="sidebar" class="sidebar">
+<div class="sidebar-header">
+<input type="text" id="search-input" placeholder="Search number...">
+</div>
+<ul id="number-list"></ul>
+</div>
+
+<div id="sidebar-overlay"></div>
+
+<div id="main-content" class="main-content">
+<div class="input-container card">
+<input type="text" id="number-input" placeholder="Enter new number">
+<button id="add-button">Add</button>
+</div>
+
+<footer class="main-footer">
+<p>&copy; 2025 Copyright By ramacoded</p>
+<a href="https://github.com/ramacoded" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+<svg class="github-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="24" height="24" fill="currentColor"><path d="M8 0a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38l-.01-1.34c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.22.82 1.22.82.71 1.22 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48l-.01 2.2c0 .21.15.46.55.38A8 8 0 0 0 8 0Z"></path></svg>
+</a>
+</footer>
+</div>
+</div>
+
+<div id="modal-overlay"></div>
+<div id="user-modal" class="card">
+<button id="close-modal-button" class="close-button">&times;</button>
+<h3>Account Info</h3>
+<div class="info-field">
+<small>Username</small>
+<p id="modal-username"></p>
+</div>
+<div class="info-field">
+<small>Password</small>
+<div class="password-display-container">
+<p id="modal-password-mask">••••••••</p>
+<p id="modal-password-actual" style="display: none;"></p>
+</div>
+</div>
+<button id="modal-toggle-password-btn">Tampilkan</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
