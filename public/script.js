@@ -1,8 +1,5 @@
-// --- KONFIGURASI ---
-const GITHUB_USERNAME = 'ramacoded' // Hanya untuk menampilkan nama & avatar, bukan untuk otentikasi
-// --------------------
+const GITHUB_USERNAME = 'ramacoded'
 
-// DOM Elements
 const passwordSection = document.getElementById('password-section')
 const mainSection = document.getElementById('main-section')
 const sidebar = document.getElementById('sidebar')
@@ -16,7 +13,7 @@ const modalTogglePasswordBtn = document.getElementById('modal-toggle-password-bt
 const appLoader = document.getElementById('app-loader')
 
 let numbersData = []
-let appPassword = '' // Akan diisi setelah login berhasil
+let appPassword = '' 
 
 function showLoader(message = 'Loading...') { appLoader.querySelector('p').textContent = message; appLoader.style.display = 'flex' }
 function hideLoader() { appLoader.style.display = 'none' }
@@ -75,10 +72,10 @@ async function saveNumbers() {
       body: JSON.stringify(numbersData)
     })
     if (!response.ok) throw new Error('Failed to save to database')
-    renderNumbers(numbersData) // Re-render dari data lokal yang sudah sinkron
+    renderNumbers(numbersData) 
   } catch (error) {
     alert(error.message)
-    await loadNumbers() // Jika gagal, sinkronkan ulang dengan server
+    await loadNumbers()
   } finally {
     hideLoader()
   }
@@ -147,7 +144,7 @@ async function checkPassword(event) {
     })
 
     if (response.ok) {
-      appPassword = password // Simpan password untuk ditampilkan di modal
+      appPassword = password
       passwordSection.classList.remove('active')
       mainSection.classList.add('active')
       document.body.style.backgroundColor = 'var(--background-color)'
@@ -171,7 +168,7 @@ function openUserModal() {
   document.getElementById('modal-username').textContent = GITHUB_USERNAME
   const passMask = document.getElementById('modal-password-mask')
   const passActual = document.getElementById('modal-password-actual')
-  passActual.textContent = appPassword // Gunakan password yang tersimpan
+  passActual.textContent = appPassword 
   passMask.style.display = 'block'
   passActual.style.display = 'none'
   modalTogglePasswordBtn.textContent = 'Tampilkan'
@@ -196,7 +193,6 @@ function togglePassword() {
   modalTogglePasswordBtn.textContent = isMasked ? 'Sembunyikan' : 'Tampilkan'
 }
 
-// Event Listeners
 document.getElementById('password-submit').addEventListener('click', checkPassword)
 document.getElementById('password-input').addEventListener('keypress', (e) => e.key === 'Enter' && checkPassword(e))
 document.getElementById('add-button').addEventListener('click', handleAdd)
