@@ -2,7 +2,7 @@
 const GITHUB_USERNAME = 'ramacoded';
 const REPO_NAME = 'security-database';
 const FILE_PATH = 'number.json';
-const GITHUB_TOKEN = 'Z2hwX0hWMkJ0c1NzVUlyYW5QNGxrdWVSQ3JCMDBTTExwdjFoYUxOVw==';
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN
 const APP_PASSWORD = '1';
 // --------------------
 
